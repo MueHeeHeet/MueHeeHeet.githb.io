@@ -1,0 +1,553 @@
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>နန်းမူးဟီဟိ - ကိုယ်ရေးကိုယ်တာစာမျက်နှာ</title>
+    <style>
+        :root {
+            --primary-color: #3498db;
+            --secondary-color: #2980b9;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --accent-color: #e74c3c;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Pyidaungsu', 'Noto Sans Myanmar', sans-serif;
+        }
+        
+        body {
+            background-color: #f9f9f9;
+            color: #333;
+            line-height: 1.6;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 60px 0 80px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: -50px;
+            left: 0;
+            right: 0;
+            height: 100px;
+            background-color: #f9f9f9;
+            transform: skewY(-3deg);
+            z-index: 1;
+        }
+        
+        .profile-img {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 5px solid white;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            margin-bottom: 20px;
+            z-index: 2;
+            position: relative;
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            z-index: 2;
+            position: relative;
+        }
+        
+        .tagline {
+            font-size: 1.2rem;
+            opacity: 0.9;
+            z-index: 2;
+            position: relative;
+        }
+        
+        section {
+            padding: 60px 0;
+            position: relative;
+        }
+        
+        .section-title {
+            text-align: center;
+            margin-bottom: 40px;
+            color: var(--dark-color);
+            position: relative;
+        }
+        
+        .section-title::after {
+            content: '';
+            display: block;
+            width: 80px;
+            height: 4px;
+            background-color: var(--primary-color);
+            margin: 15px auto;
+            border-radius: 2px;
+        }
+        
+        .about-content {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 40px;
+            margin-bottom: 40px;
+        }
+        
+        .about-text {
+            flex: 1;
+            min-width: 300px;
+        }
+        
+        .about-image {
+            flex: 1;
+            min-width: 300px;
+            text-align: center;
+        }
+        
+        .about-image img {
+            max-width: 100%;
+            border-radius: 10px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .info-card {
+            background-color: white;
+            padding: 25px;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+        
+        .info-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+        }
+        
+        .info-card h3 {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .info-card h3 i {
+            margin-right: 10px;
+            font-size: 1.2rem;
+        }
+        
+        .hobbies {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .hobby {
+            background-color: var(--light-color);
+            padding: 8px 15px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+        
+        .awards {
+            margin-top: 20px;
+        }
+        
+        .award {
+            margin-bottom: 10px;
+            padding-left: 20px;
+            position: relative;
+        }
+        
+        .award::before {
+            content: '🏆';
+            position: absolute;
+            left: 0;
+        }
+        
+        .gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 30px;
+        }
+        
+        .gallery-item {
+            height: 200px;
+            border-radius: 8px;
+            overflow: hidden;
+            position: relative;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+        }
+        
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+        
+        .gallery-caption {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 10px;
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+        
+        .gallery-item:hover .gallery-caption {
+            transform: translateY(0);
+        }
+        
+        .timeline {
+            position: relative;
+            max-width: 800px;
+            margin: 40px auto;
+        }
+        
+        .timeline::after {
+            content: '';
+            position: absolute;
+            width: 4px;
+            background-color: var(--primary-color);
+            top: 0;
+            bottom: 0;
+            left: 50%;
+            margin-left: -2px;
+        }
+        
+        .timeline-item {
+            padding: 10px 40px;
+            position: relative;
+            width: 50%;
+            box-sizing: border-box;
+        }
+        
+        .timeline-item::after {
+            content: '';
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: white;
+            border: 4px solid var(--primary-color);
+            border-radius: 50%;
+            top: 15px;
+            z-index: 1;
+        }
+        
+        .left {
+            left: 0;
+        }
+        
+        .right {
+            left: 50%;
+        }
+        
+        .left::after {
+            right: -12px;
+        }
+        
+        .right::after {
+            left: -12px;
+        }
+        
+        .timeline-content {
+            padding: 20px;
+            background-color: white;
+            border-radius: 8px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+        }
+        
+        .timeline-date {
+            font-weight: bold;
+            color: var(--primary-color);
+            margin-bottom: 5px;
+        }
+        
+        footer {
+            background-color: var(--dark-color);
+            color: white;
+            text-align: center;
+            padding: 30px 0;
+            margin-top: 60px;
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .social-link {
+            color: white;
+            font-size: 1.5rem;
+            transition: color 0.3s ease;
+        }
+        
+        .social-link:hover {
+            color: var(--primary-color);
+        }
+        
+        @media (max-width: 768px) {
+            .timeline::after {
+                left: 31px;
+            }
+            
+            .timeline-item {
+                width: 100%;
+                padding-left: 70px;
+                padding-right: 25px;
+            }
+            
+            .timeline-item::after {
+                left: 21px;
+            }
+            
+            .left::after, .right::after {
+                left: 21px;
+            }
+            
+            .right {
+                left: 0;
+            }
+        }
+        
+        /* Animation */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+        
+        .fade-in {
+            animation: fadeIn 1s ease forwards;
+        }
+        
+        .delay-1 { animation-delay: 0.2s; }
+        .delay-2 { animation-delay: 0.4s; }
+        .delay-3 { animation-delay: 0.6s; }
+        .delay-4 { animation-delay: 0.8s; }
+    </style>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Padauk&display=swap" rel="stylesheet">
+</head>
+<body>
+    <header>
+        <div class="container">
+            <img src="https://images.unsplash.com/photo-1494790108377-be9c29b29330?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="Profile Picture" class="profile-img">
+            <h1 class="fade-in">နန်းမူးဟီဟိ</h1>
+            <p class="tagline fade-in delay-1">အနာဂတ်ဆရာမ | သီလရှင် | အနုပညာရှင်</p>
+        </div>
+    </header>
+    
+    <section id="about">
+        <div class="container">
+            <h2 class="section-title fade-in">ကျွန်မအကြောင်း</h2>
+            <div class="about-content">
+                <div class="about-text fade-in delay-1">
+                    <p>မင်္ဂလာပါ! ကျွန်မက ဘားအံမြို့နယ်၊ တောင်ကလေးရွာမှ နေထိုင်တဲ့ အသက် ၁၇ နှစ်အရွယ် ကျောင်းသူတစ်ဦးဖြစ်ပါတယ်။ တောင်ကလေးဘုန်းတော်ကြီးသင်ပညာရေးကျောင်းမှာ သီလရှင်ဘဝနဲ့ ပညာသင်ယူနေပါတယ်။</p>
+                    <p>ကျွန်မက ပန်းချီဆွဲခြင်း၊ သီချင်းနားထောင်ခြင်းနဲ့ ကြက်တောင်ရိုက်ခြင်းတို့ကို ဝါသနာပါပါတယ်။ ကျွန်မရဲ့အိပ်မက်ကတော့ ဆရာမတစ်ယောက်ဖြစ်ပြီး အခြားသူတွေကို ပညာမျှဝေပေးချင်ပါတယ်။</p>
+                    <p>အိမ်မှာဆိုရင် မိဘတွေကို ပြုစုရတာ၊ ညီမ/ညီလေးတွေနဲ့ အတူကစားရတာကို ပျော်ပါတယ်။ ဘုန်းတော်ကြီးကျောင်းမှာနေရင်း ကျောင်းစာရော၊ ဘုရားစာပါ သင်ယူနေရတဲ့အတွက် ရွာမှာနေရင်တော့ ဒီလိုအတွေ့အကြုံတွေ မရနိုင်မှာပါ။</p>
+                </div>
+                <div class="about-image fade-in delay-2">
+                    <img src="https://images.unsplash.com/photo-1529333166437-7750a6dd5a70?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="သီလရှင်ဘဝနှင့် ပညာသင်ယူနေပုံ">
+                </div>
+            </div>
+            
+            <div class="info-grid">
+                <div class="info-card fade-in delay-2">
+                    <h3><i class="fas fa-user"></i> အခြေခံအချက်အလက်</h3>
+                    <p><strong>အသက်:</strong> ၁၇ နှစ်</p>
+                    <p><strong>ကျေးရွာ:</strong> တောင်ကလေးရွာ၊ ဘားအံမြို့နယ်</p>
+                    <p><strong>ပြည်နယ်:</strong> ကရင်ပြည်နယ်</p>
+                    <p><strong>အတန်း:</strong> ၁၁ တန်း</p>
+                </div>
+                
+                <div class="info-card fade-in delay-3">
+                    <h3><i class="fas fa-heart"></i> ဝါသနာများ</h3>
+                    <div class="hobbies">
+                        <span class="hobby">ပန်းချီဆွဲခြင်း</span>
+                        <span class="hobby">သီချင်းနားထောင်ခြင်း</span>
+                        <span class="hobby">ကြက်တောင်ရိုက်ခြင်း</span>
+                        <span class="hobby">မိတ်ဆွေများနှင့်အတူပျော်ရွှင်စွာခရီးသွားခြင်း</span>
+                        <span class="hobby">မိသားစုဂရုစိုက်ခြင်း</span>
+                    </div>
+                </div>
+                
+                <div class="info-card fade-in delay-4">
+                    <h3><i class="fas fa-graduation-cap"></i> ပညာရေး</h3>
+                    <p>တောင်ကလေးဘုန်းတော်ကြီးသင်ပညာရေးကျောင်း</p>
+                    <p>ကျောင်းစာနှင့် ဘုရားစာ နှစ်မျိုးလုံးသင်ယူနေခြင်း</p>
+                    <p>ဆဋ္ဌမတန်းတွင် သီလရှင်ဝတ်ခဲ့ခြင်း</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="achievements" style="background-color: #f0f8ff;">
+        <div class="container">
+            <h2 class="section-title fade-in">ကျွန်မရဲ့အောင်မြင်မှုများ</h2>
+            <div class="info-grid">
+                <div class="info-card fade-in delay-1">
+                    <h3><i class="fas fa-award"></i> ပညာရေးဆုများ</h3>
+                    <div class="awards">
+                        <div class="award">ပါဠိပထမပြန်စာမေးပွဲ (အခြေပြုမူလတန်း)</div>
+                        <div class="award">အဘိဓမ္မာနှင့်ဝိသုဒ္ဓိမဂ်စာမေးပွဲ (ပထမဆင့်)</div>
+                        <div class="award">အဘိဓမ္မာနှင့်ဝိသုဒ္ဓိမဂ်စာမေးပွဲ (ဒုတိယဆင့်)</div>
+                        <div class="award">အဘိဓမ္မာနှင့်ဝိသုဒ္ဓိမဂ်စာမေးပွဲ (တတိယဆင့်)</div>
+                        <div class="award">သာသနာ့ဇောတကစာမေးပွဲ (အခြေပြုမူလတန်း)</div>
+                        <div class="award">ကရင်စာပေ</div>
+                    </div>
+                </div>
+                
+                <div class="info-card fade-in delay-2">
+                    <h3><i class="fas fa-flask"></i> ပရောဂျက်များ</h3>
+                    <p><strong>ဆပ်ပြာရည်ပြုလုပ်ခြင်း:</strong> အသုံးချပညာရပ်အနေနဲ့ ဆပ်ပြာရည်ပြုလုပ်နည်းကို လေ့လာခဲ့ခြင်း</p>
+                    <p><strong>ပန်းချီပြပွဲ:</strong> ကျောင်းပန်းချီပြပွဲများတွင် ကျွန်မရဲ့ပန်းချီလက်ရာများပြသခဲ့ခြင်း</p>
+                    <p><strong>ဗုဒ္ဓဘာသာလေ့လာမှု:</strong> ပါဠိနှင့် ဗုဒ္ဓကျမ်းစာများကို အဆက်မပြတ်လေ့လာနေခြင်း</p>
+                </div>
+                
+                <div class="info-card fade-in delay-3">
+                    <h3><i class="fas fa-star"></i> ဘဝရည်မှန်းချက်များ</h3>
+                    <p>ဆရာမတစ်ဦးဖြစ်ပြီး အခြားသူများကို ပညာမျှဝေပေးရန်</p>
+                    <p>ဗုဒ္ဓဘာသာတရားတော်များကို နက်နက်နဲနဲနားလည်လာစေရန်</p>
+                    <p>ကျွန်မရဲ့ပတ်ဝန်းကျင်အတွက် အပြုသဘောဆောင်သော ဩဇာလွှမ်းမိုးနိုင်သူဖြစ်ရန်</p>
+                    <p>စိတ်အားတက်ဖွယ်အနုပညာလက်ရာများ ဆက်လက်ဖန်တီးနိုင်ရန်</p>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="gallery">
+        <div class="container">
+            <h2 class="section-title fade-in">ကျွန်မဘဝမှ ဓာတ်ပုံများ</h2>
+            <div class="gallery">
+                <div class="gallery-item fade-in delay-1">
+                    <img src="https://images.unsplash.com/photo-1544717305-2782549b5136?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="ဘုန်းတော်ကြီးကျောင်းတွင် ပညာသင်ယူနေပုံ">
+                    <div class="gallery-caption">ဘုန်းတော်ကြီးကျောင်းတွင် ပညာသင်ယူနေပုံ</div>
+                </div>
+                <div class="gallery-item fade-in delay-2">
+                    <img src="https://images.unsplash.com/photo-1541178735493-479c1a27ed24?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="ပန်းချီဆွဲခြင်း">
+                    <div class="gallery-caption">ကျွန်မရဲ့ပန်းချီဝါသနာ</div>
+                </div>
+                <div class="gallery-item fade-in delay-3">
+                    <img src="https://images.unsplash.com/photo-1511671782779-c97d3d27a1d4?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="ကြက်တောင်ရိုက်နေပုံ">
+                    <div class="gallery-caption">ကြက်တောင်ရိုက်နေပုံ</div>
+                </div>
+                <div class="gallery-item fade-in delay-4">
+                    <img src="https://images.unsplash.com/photo-1549060279-7e168fcee0c2?ixlib=rb-1.2.1&auto=format&fit=crop&w=500&q=60" alt="မိတ်ဆွေများနှင့်အတူ">
+                    <div class="gallery-caption">မိတ်ဆွေများနှင့် ပျော်ရွှင်စွာခရီးသွားခြင်း</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <section id="timeline" style="background-color: #f5f5f5;">
+        <div class="container">
+            <h2 class="section-title fade-in">ကျွန်မဘဝခရီး</h2>
+            <div class="timeline">
+                <div class="timeline-item left fade-in delay-1">
+                    <div class="timeline-content">
+                        <div class="timeline-date">ငယ်စဉ်ဘဝ</div>
+                        <p>တောင်ကလေးရွာတွင် ကြီးပြင်းခဲ့ပြီး မိသားစုနှင့် မိတ်ဆွေများနှင့်အတူ အေးချမ်းသောကျေးရွာဘဝကို ဖြတ်သန်းခဲ့ခြင်း</p>
+                    </div>
+                </div>
+                <div class="timeline-item right fade-in delay-2">
+                    <div class="timeline-content">
+                        <div class="timeline-date">ဆဋ္ဌမတန်း</div>
+                        <p>သီလရှင်ဝတ်ပြီး တောင်ကလေးဘုန်းတော်ကြီးသင်ပညာရေးကျောင်းတွင် ပညာစတင်သင်ယူခြင်း</p>
+                    </div>
+                </div>
+                <div class="timeline-item left fade-in delay-3">
+                    <div class="timeline-content">
+                        <div class="timeline-date">သီလရှင်ဘဝ</div>
+                        <p>ကျောင်းစာနှင့် ဗုဒ္ဓဘာသာသင်ခန်းစာများကို သင်ယူရင်း ပညာသင်ကြားခြင်းနှင့် သင်ကြားပေးခြင်းကို နှစ်သက်လာခြင်း</p>
+                    </div>
+                </div>
+                <div class="timeline-item right fade-in delay-4">
+                    <div class="timeline-content">
+                        <div class="timeline-date">လက်ရှိ (၁၁ တန်း)</div>
+                        <p>အနာဂတ်ဆရာမတစ်ဦးဖြစ်ရန် ပြင်ဆင်နေချိန်တွင် ကျောင်းစာများနှင့် ဗုဒ္ဓဘာသာအလေ့အကျင့်များကို ဟန်ချက်ညီညီလုပ်ဆောင်နေခြင်း</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+    
+    <footer>
+        <div class="container">
+            <h3 class="fade-in">နန်းမူးဟီဟိ</h3>
+            <p class="fade-in delay-1">အနာဂတ်ဆရာမ | သီလရှင် | အနုပညာရှင်</p>
+            <div class="social-links">
+                <a href="#" class="social-link fade-in delay-2"><i class="fab fa-github"></i></a>
+                <a href="#" class="social-link fade-in delay-3"><i class="fab fa-facebook"></i></a>
+                <a href="#" class="social-link fade-in delay-4"><i class="fab fa-instagram"></i></a>
+            </div>
+            <p class="fade-in delay-4" style="margin-top: 20px;">&copy; ၂၀၂၃ မူပိုင်ခွင့်အားလုံးရှိပါသည်</p>
+        </div>
+    </footer>
+    
+    <script>
+        // Simple animation trigger
+        document.addEventListener('DOMContentLoaded', function() {
+            const fadeElements = document.querySelectorAll('.fade-in');
+            
+            const fadeInObserver = new IntersectionObserver((entries) => {
+                entries.forEach(entry => {
+                    if (entry.isIntersecting) {
+                        entry.target.style.opacity = 1;
+                        entry.target.style.transform = 'translateY(0)';
+                    }
+                });
+            }, { threshold: 0.1 });
+            
+            fadeElements.forEach(element => {
+                element.style.opacity = 0;
+                element.style.transform = 'translateY(20px)';
+                element.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+                fadeInObserver.observe(element);
+            });
+            
+            // Gallery hover effect
+            const galleryItems = document.querySelectorAll('.gallery-item');
+            galleryItems.forEach(item => {
+                item.addEventListener('mouseenter', function() {
+                    this.querySelector('.gallery-caption').style.transform = 'translateY(0)';
+                });
+                item.addEventListener('mouseleave', function() {
+                    this.querySelector('.gallery-caption').style.transform = 'translateY(100%)';
+                });
+            });
+        });
+    </script>
+</body>
+</html>
